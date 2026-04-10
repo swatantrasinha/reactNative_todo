@@ -194,6 +194,72 @@ Below will be the outpuut
 
 <img width="369" height="800" alt="image" src="https://github.com/user-attachments/assets/d50e6d98-7924-410a-8af1-7f8fd5364b28" />
 
+11. The CSS in SafeAreaView component will now be moved separately using StyleSheet from react-native   
+This will not have any impact on view as its just separating the CSS code   
+
+```javascript
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+export default function Index() {
+  const todoData = [
+    {
+      id: 1,
+      title: "Todo 1",
+      isDone: false,
+    },
+    {
+      id: 2,
+      title: "Todo 2",
+      isDone: false,
+    },
+    {
+      id: 3,
+      title: "Todo 3",
+      isDone: false,
+    },
+    {
+      id: 4,
+      title: "Todo 4",
+      isDone: true,
+    },
+    {
+      id: 5,
+      title: "Todo 5",
+      isDone: false,
+    },
+    {
+      id: 6,
+      title: "Todo 6",
+      isDone: false,
+    },
+  ];
+
+  return (
+    <SafeAreaView style={styles.container}>
+      {/* <Text>Hello World</Text> */}
+      <FlatList
+        data={todoData}
+        keyExtractor={(index) => index.id.toString()}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.title}</Text>
+          </View>
+        )}
+      />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
+
+```
 
 </p>
 </details>
