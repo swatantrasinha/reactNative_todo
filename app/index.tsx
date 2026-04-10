@@ -2,11 +2,6 @@ import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
-  type todoType = {
-    id: number;
-    title: string;
-    isDone: boolean;
-  };
   const todoData = [
     {
       id: 1,
@@ -40,14 +35,6 @@ export default function Index() {
     },
   ];
 
-  const displayTodo = (itemData: todoType) => {
-    return (
-      <View>
-        <Text>{itemData.title}</Text>
-      </View>
-    );
-  };
-
   return (
     <SafeAreaView
       style={{
@@ -56,16 +43,15 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      {/* <Text>Edit app/index.tsx to edit this screen.</Text> */}
+      {/* <Text>Hello World</Text> */}
       <FlatList
         data={todoData}
         keyExtractor={(index) => index.id.toString()}
-        // renderItem={({ item }) => (
-        //   <View>
-        //     <Text>{item.title}</Text>
-        //   </View>
-        // )}
-        renderItem={({ item }) => displayTodo(item)}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.title}</Text>
+          </View>
+        )}
       />
     </SafeAreaView>
   );
