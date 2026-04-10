@@ -264,6 +264,13 @@ const styles = StyleSheet.create({
 </p>
 </details>
 
+---   
+
+Now we will see use of below 
+- Image:  with props --> source={{ uri: <url-of-image> }} style={with witdth, height, borderRadius etc}   
+
+- TouchableOpacity:  TouchableOpacity is a pressable wrapper component in React Native that makes any child component touch‑responsive by reducing its opacity when pressed. It’s commonly used for buttons, icons, cards, and list items.
+
 
 
 
