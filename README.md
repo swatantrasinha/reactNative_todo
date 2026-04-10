@@ -1,50 +1,203 @@
 # Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### Start with code
+<details>
+    <summary>Steps to start with expo</summary>
+    <p>
 
-## Get started
+1. give command   
 
-1. Install dependencies
+> npx create-expo-app@latest
 
-   ```bash
-   npm install
-   ```
+- give name of the app as **expo-crash-course**
 
-2. Start the app
+**See the various files and folder created**
 
-   ```bash
-   npx expo start
-   ```
+2. give reset command using bun
 
-In the output, you'll find options to open the app in a
+> bun run reset-project
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- when it asks: Do you want to move existing files to /app-example instead of deleting them? (Y/n) --> Select **n**
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+3. now give command to install
 
-## Get a fresh project
+> npm i
 
-When you're ready, run:
+4. Now give below command 
 
-```bash
-npm run reset-project
+> bunx expo start   
+
+Note if there is any network related then give below command and then above command in point 4   
+> EXPO_OFFLINE=1 bunx expo start
+
+5. We will see QR code 
+we can scan it and see output as below: 
+<img width="369" height="800" alt="image" src="https://github.com/user-attachments/assets/885474df-f9c7-4331-b8d4-d8cdc10669b4" />
+
+
+7. now in **app** folder inside **index.tsx** file, change below:   
+
+   ~<Text>Edit app/index.tsx to edit this screen.</Text>~   
+   to    
+   <Text>Hello World </Text>
+   
+The output in mobile device will be changed to below:
+
+<img width="369" height="800" alt="image" src="https://github.com/user-attachments/assets/3f0802c6-0906-4bee-a444-54ed32a5bffe" />
+
+8. Now lets addd todo items array and display it   
+```javascript
+import { FlatList, Text, View } from "react-native";
+
+export default function Index() {
+
+  const todoData = [
+    {
+      id: 1,
+      title: "Todo 1",
+      isDone: false,
+    },
+    {
+      id: 2,
+      title: "Todo 2",
+      isDone: false,
+    },
+    {
+      id: 3,
+      title: "Todo 3",
+      isDone: false,
+    },
+    {
+      id: 4,
+      title: "Todo 4",
+      isDone: true,
+    },
+    {
+      id: 5,
+      title: "Todo 5",
+      isDone: false,
+    },
+    {
+      id: 6,
+      title: "Todo 6",
+      isDone: false,
+    },
+  ];
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {/* <Text>Hello World </Text> */}
+      <FlatList
+        data={todoData}
+        keyExtractor={(index) => index.id.toString()}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.title}</Text>
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+```
+this is how it will be shown   
+<img width="590" height="1280" alt="image" src="https://github.com/user-attachments/assets/37ea27b6-eeb9-47ac-a35d-f89e8fc8ba47" />
+
+
+9. We can see there is header with **index** text. We don't want this so we will add prop **screenOptions** into **Stack** component in layout.tsx   
+
+```javascript
+import { Stack } from "expo-router";
+
+export default function RootLayout() {
+// return <Stack />
+   return <Stack screenOptions={{ headerShown: false }} />;
+}
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+With this change, the header with text **index** is removed but the main content with todo items are going out of view as below: 
 
-## Learn more
+<img width="369" height="800" alt="image" src="https://github.com/user-attachments/assets/f76cc984-a4ca-44b0-8880-86fa5e59e9d9" />
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+10. To make content appear in safe view in index.tsx change **View** to **SafeAreaView**   
 
-## Join the community
+```javascript
+import { FlatList, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-Join our community of developers creating universal apps.
+export default function Index() {
+  const todoData = [
+    {
+      id: 1,
+      title: "Todo 1",
+      isDone: false,
+    },
+    {
+      id: 2,
+      title: "Todo 2",
+      isDone: false,
+    },
+    {
+      id: 3,
+      title: "Todo 3",
+      isDone: false,
+    },
+    {
+      id: 4,
+      title: "Todo 4",
+      isDone: true,
+    },
+    {
+      id: 5,
+      title: "Todo 5",
+      isDone: false,
+    },
+    {
+      id: 6,
+      title: "Todo 6",
+      isDone: false,
+    },
+  ];
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {/* <Text>Hello World</Text> */}
+      <FlatList
+        data={todoData}
+        keyExtractor={(index) => index.id.toString()}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.title}</Text>
+          </View>
+        )}
+      />
+    </SafeAreaView>
+  );
+}
+
+```
+Below will be the outpuut   
+
+<img width="369" height="800" alt="image" src="https://github.com/user-attachments/assets/d50e6d98-7924-410a-8af1-7f8fd5364b28" />
+
+
+</p>
+</details>
+
+
+
+
