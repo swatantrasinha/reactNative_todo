@@ -280,4 +280,13 @@ Now we will see use of below
 > npm install expo-checkbox@4.0.1
 
 
+<details>
+    <summary>Use of **AsyncStorage**  </summary>
+    <p>
+to store data in browser storage    
+Link : https://docs.expo.dev/versions/latest/sdk/async-storage/
+    </p>
+</details>
+
+
 
