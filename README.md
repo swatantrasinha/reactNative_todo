@@ -269,8 +269,24 @@ const styles = StyleSheet.create({
 Now we will see use of below 
 - Image:  with props --> source={{ uri: <url-of-image> }} style={with witdth, height, borderRadius etc}   
 
-- TouchableOpacity:  TouchableOpacity is a pressable wrapper component in React Native that makes any child component touch‑responsive by reducing its opacity when pressed. It’s commonly used for buttons, icons, cards, and list items.
+- TouchableOpacity:  TouchableOpacity is a pressable wrapper component in React Native that makes any child component touch‑responsive by reducing its opacity when pressed. It’s commonly used for buttons, icons, cards, and list items.   
 
+- Ionicons - from **@expo/vector-icons** to show icons   
+
+- TextInput - input textbox   
+
+- Checkbox - we will install a package for checkbox   
+
+> npm install expo-checkbox@4.0.1
+
+
+<details>
+    <summary>Use of **AsyncStorage**  </summary>
+    <p>
+to store data in browser storage    
+Link : https://docs.expo.dev/versions/latest/sdk/async-storage/
+    </p>
+</details>
 
 
 
