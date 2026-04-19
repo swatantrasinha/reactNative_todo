@@ -281,11 +281,27 @@ Now we will see use of below
 
 
 <details>
-    <summary>Use of **AsyncStorage**  </summary>
-    <p>
-to store data in browser storage    
-Link : https://docs.expo.dev/versions/latest/sdk/async-storage/
-    </p>
+<summary>Use of **AsyncStorage**  </summary>
+<p>
+    The todo app when loads or refreshed only shows the takks mentionedin static array. The newly added item and deleted items are not preserved.
+    For this we will store the array after every operation to browser storage and on page load will fetch it from there.   
+    To store and fetch data via browser storage we will use AsyncStorage :   
+    
+    - Overview and install command : https://docs.expo.dev/versions/latest/sdk/async-storage
+    - Code : https://react-native-async-storage.github.io/2.0/Usage/
+
+Use below command to install it :   
+    
+> npx expo install @react-native-async-storage/async-storage   
+
+However, due to network proxy issue I will use below   
+    
+> npm install @react-native-async-storage/async-storage
+
+We will follow the documentation (link above) for storing and fetching data   
+
+
+</p>
 </details>
 
 
