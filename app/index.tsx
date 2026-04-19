@@ -112,13 +112,10 @@ export default function Index() {
   }, []);
 
   useEffect(() => {
-    console.log("inside useEffect for searchQuery: ", searchQuery);
-
     onSearch(searchQuery);
   }, [searchQuery]);
 
   const addNewItem = async () => {
-    console.log("item added ");
     try {
       const newTodo = {
         id: Math.random(),
@@ -138,7 +135,6 @@ export default function Index() {
   };
 
   const onDelete = async (itemId: number) => {
-    console.log("deleted : ", itemId);
     try {
       const updatedTodos = todos.filter((item) => item.id !== itemId);
       setTodos(updatedTodos);
@@ -168,15 +164,12 @@ export default function Index() {
   };
 
   const onSearch = (query: string) => {
-    console.log("onSearch for : ", query);
     if (!query) {
-      console.log("inside if !query : ", query);
       setTodos(oldTodos);
     } else {
       const filteredData = todos?.filter((item) =>
         item.title.toLowerCase().includes(query.toLowerCase()),
       );
-      console.log("inside onSearch filteredData : ", filteredData);
       setTodos(filteredData);
     }
   };
