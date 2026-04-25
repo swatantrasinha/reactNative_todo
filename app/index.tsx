@@ -57,6 +57,7 @@ const TodoItem = ({
 );
 
 export default function Index() {
+  /*
   const todoData = [
     {
       id: 1,
@@ -89,6 +90,7 @@ export default function Index() {
       isDone: false,
     },
   ];
+  */
 
   const [todos, setTodos] = useState<ToDoType[]>([]);
   const [todoText, setTodoText] = useState<string>("");
