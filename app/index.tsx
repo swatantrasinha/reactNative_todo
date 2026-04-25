@@ -106,7 +106,7 @@ export default function Index() {
           setOldTodos(JSON.parse(todoList));
         }
       } catch (err) {
-        console.log("getTodoList --> err : ", err);
+        console.log("getTodoList --> err is : ", err);
       }
     };
 
